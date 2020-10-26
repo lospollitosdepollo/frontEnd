@@ -1,0 +1,38 @@
+h1{
+    padding: 10px;
+    margin-top: 150px;
+    margin-left: 590px;
+    margin-right: 50px;   
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+
+}
+
+img{
+    margin-left: 625px;
+    margin-right: 50px;
+}
+
+.btn_registrarse{
+    padding: 10px;
+    background-color:cadetblue;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    color: white;
+    width: 200px;
+    border: 10px solid;
+    margin-top: 80px;
+    margin-left: 500px;
+    margin-right: 50px;
+}
+
+.btn_inicio_sesion{
+    padding: 10px;
+    background-color: turquoise;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    color: white;
+    width: 200px;
+    border: 10px solid;
+    margin-bottom: 100px;
+}
+
