@@ -5,6 +5,18 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     RoleArn: "arn:aws:iam::374632472070:role/Cognito_ProyectoComponentesUnauth_Role"
 });
 
+let cedula = document.getElementById('txt_cedula');
+let primernombre = document.getElementById('txt_primer_nombre');
+let segundonombre = document.getElementById('txt_segundo_nombre');
+let primerapellido = document.getElementById('txt_primer_apellido');
+let segundoapellido = document.getElementById('txt_segundo_apellido');
+let email = document.getElementById('txt_email');
+let usuario = document.getElementById('txt_usuario');
+let contrasenna = document.getElementById('txt_contrasenna');
+let edad = document.getElementById('txt_edad');
+let canton = document.getElementById('txt_canton');
+let distrito = document.getElementById('txt_distrito');
+let direccionexacta = document.getElementById('txt_direccionexacta');
 
 var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
@@ -20,8 +32,8 @@ function createUsers() {
             { AttributeName: "cedula", AttributeType: "S" }
         ],
         ProvisionedThroughput: {       
-            ReadCapacityUnits: 5,
-            WriteCapacityUnits: 5
+            ReadCapacityUnits: 50,
+            WriteCapacityUnits: 50
         }
     };
 
@@ -39,19 +51,19 @@ function createItem() {
         TableName :"Usuarios1",
         Item:{
             "id": 0,
-            "cedula": document.getElementById('txt_cedula'),
-            "primernombre": document.getElementById('txt_primer_nombre'),
-            "segundonombre": document.getElementById('txt_segundo_nombre'),
-            "primerapellido": document.getElementById('txt_primer_apellido'),
-            "segundoapellido": document.getElementById('txt_segundo_apellido'),
-            "email": document.getElementById('txt_email'),
-            "usuario": document.getElementById('txt_usuario'),
-            "contrasenna": document.getElementById('txt_contrasenna'),
-            "edad": document.getElementById('txt_edad'),
+            "cedula": cedula,
+            "primernombre": primernombre,
+            "segundonombre": segundonombre,
+            "primerapellido": primerapellido,
+            "segundoapellido": segundoapellido,
+            "email": email,
+            "usuario": usuario,
+            "contrasenna": contrasenna,
+            "edad": edad,
             "pais": "Costa Rica",
-            "canton": document.getElementById('txt_canton'),
-            "distrito": document.getElementById('txt_distrito'),
-            "direccionexacta":document.getElementById('txt_direccionexacta') 
+            "canton": canton,
+            "distrito": distrito,
+            "direccionexacta": direccionexacta
         }
         
     };
@@ -65,5 +77,3 @@ function createItem() {
 }
 
 
-let btnRegistrar = document.getElementById('btnRegistrar');
-btnRegistrar.addEventListener('click', createItem);
