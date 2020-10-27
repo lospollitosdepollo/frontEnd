@@ -14,7 +14,7 @@ img{
 
 .btn_registrarse{
     padding: 10px;
-    background-color:cadetblue;
+    background-color: #fc2c77;
     font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
     font-size: 18px;
     color: white;
@@ -27,7 +27,7 @@ img{
 
 .btn_inicio_sesion{
     padding: 10px;
-    background-color: turquoise;
+    background-color: #6c4079;
     font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
     font-size: 18px;
     color: white;

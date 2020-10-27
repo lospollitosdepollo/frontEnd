@@ -11,16 +11,11 @@
     <!-- Title Page-->
     <title>Prueba proyecto componentes</title>
 
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
+   
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
 </head>
@@ -36,25 +31,31 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Primer nombre</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <input class="input--style-4" id="txt_primer_nombre" type="text">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Segundo Nombre</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" id="txt_segundo_nombre" type="text">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Cedula</label>
+                                    <input class="input--style-4" id="txt_cedula" type="text">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Primer Apellido</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" id="txt_primer_apellido" type="text">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Segundo Apellido</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" id="txt_segundo_apellido" type="text">
                                 </div>
                             </div>
                         </div>
@@ -62,13 +63,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" id="txt_email"type="email">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Usuario</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" id="txt_usuario" type="text">
                                 </div>
                             </div>
                         </div>
@@ -76,13 +77,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Contraseña</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" id="txt_contrasenna" type="text">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Edad</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" id="txt_edad" type="number">
                                 </div>
                             </div>
                         </div>
@@ -90,13 +91,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">País</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" value="Costa Rica" readonly>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Cantón</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" id="txt_canton" type="text">
                                 </div>
                             </div>
                         </div>
@@ -104,18 +105,20 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Distrito</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" id="txt_distrito" type="text" >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Dirección exacta</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" id="txt_direccion_exacta" type="text">
                                 </div>
                             </div>
                         </div>
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Registrarse</button>
+                            <button class="btn btn--radius-2 btn--blue" id="btnRegistrar" onclick="createItem();" type="submit">Registrarse</button>
+                            <button class="btn btn--radius-2 btn--blue" id="btnRegistrar" onclick="createUsers();" type="submit">Crear Tabla</button>
+
                         </div>
                     </form>
                 </div>
@@ -123,19 +126,10 @@
         </div>
     </div>
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
-   /* <script src="https://sdk.amazonaws.com/js/aws-sdk-2.764.0.min.js"></script>
-
-
     <!-- Main JS-->
-    <script src="js/global.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="js/formulario.js"></script>
+  
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
+</body>
 </html>
-<!-- end document-->

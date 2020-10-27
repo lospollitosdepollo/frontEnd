@@ -37,14 +37,14 @@ var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
 function createMovies() {
     var params = {
-        TableName : "Movies",
+        TableName : "Users1",
         KeySchema: [
-            { AttributeName: "year", KeyType: "HASH"},
-            { AttributeName: "title", KeyType: "RANGE" }
+            { AttributeName: "id", KeyType: "HASH"},
+            { AttributeName: "cedula", KeyType: "RANGE" }
         ],
         AttributeDefinitions: [       
-            { AttributeName: "year", AttributeType: "N" },
-            { AttributeName: "title", AttributeType: "S" }
+            { AttributeName: "id", AttributeType: "N" },
+            { AttributeName: "cedula", AttributeType: "S" }
         ],
         ProvisionedThroughput: {       
             ReadCapacityUnits: 5,
@@ -89,10 +89,10 @@ function listMovies() {
 
 function createItem() {
     var params = {
-        TableName :"Movies",
+        TableName :"Users1",
         Item:{
-            "year": 2015,
-            "title": "The Big New Movie",
+            "id": 2015,
+            "cedula": "The Big New Movie",
             "info":{
                 "plot": "Nothing happens at all.",
                 "rating": 0
