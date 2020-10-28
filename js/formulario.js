@@ -312,6 +312,7 @@ let canton = document.getElementById('txt_canton');
 let distrito = document.getElementById('txt_distrito');
 let direccionexacta = document.getElementById('txt_direccion_exacta');
 
+let form = document.getElementById('formulario');
 
 
 function createItem() {
@@ -337,12 +338,22 @@ function createItem() {
     docClient.put(params, function(err, data) {
         if (err) {
          //   document.getElementById('textarea').innerHTML = "Unable to add item: " + "\n" + JSON.stringify(err, undefined, 2);
-        alert(JSON.stringify(err, undefined, 2));
+        console.log(JSON.stringify(err, undefined, 2));
         } else {
         //    document.getElementById('textarea').innerHTML = "PutItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
-       alert(JSON.stringify(data, undefined, 2));
-        alert("Usuario Creado");    
+       console.log(JSON.stringify(data, undefined, 2));
+       Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'El usuario ha sido creado',
+        confirmButtonText: `Volver al Inicio`,
+        showConfirmButton: false,
+        timer: 1000
+        
+      })   
+      form.reset();
     }
+
     });
 }
 
