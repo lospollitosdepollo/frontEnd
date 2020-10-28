@@ -1,4 +1,3 @@
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
 
 
 //AWS.config.update
@@ -33,6 +32,8 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
+
+/* Crear Tabla */
 function createMovies() {
     var params = {
         TableName : "Users1",
