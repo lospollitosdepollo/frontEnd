@@ -1,3 +1,4 @@
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
 
 
 //AWS.config.update
@@ -347,5 +348,4 @@ function createItem() {
 
 let btnRegistrar = document.getElementById('btnRegistrar');
 btnRegistrar.addEventListener('click', createItem);
-
 
