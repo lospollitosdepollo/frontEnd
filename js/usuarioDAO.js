@@ -1,4 +1,13 @@
 
+class usuarioDAO {
+    constructor() { 
+
+        
+     }
+  }
+
+
+
 
 AWS.config.region = 'us-east-2'; // Región
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
