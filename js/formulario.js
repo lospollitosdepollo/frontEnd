@@ -1,5 +1,4 @@
 
-
 //AWS.config.update
 //  region: "us-east-2",
   // The endpoint should point to the local or remote computer where DynamoDB (downloadable) is running.
@@ -335,18 +334,121 @@ function createItem() {
         }
         
     };
+
+    if(cedula.value){
+        cedula.classList.remove('invalido');
+        cedula.classList.add('valido');
+    }else if(cedula.value === '') {
+        cedula.classList.remove('valido');
+        cedula.classList.add('invalido');
+    }
+
+    if(primernombre.value){
+        primernombre.classList.remove('invalido');
+        primernombre.classList.add('valido');
+    }else if(primernombre.value === '') {
+        primernombre.classList.remove('valido');
+        primernombre.classList.add('invalido');
+    }
+
+    if(primerapellido.value){
+        primerapellido.classList.remove('invalido');
+        primerapellido.classList.add('valido');
+    }else if(primerapellido.value === '') {
+        primerapellido.classList.remove('valido');
+        primerapellido.classList.add('invalido');
+    }
+
+    if(segundoapellido.value){
+     segundoapellido.classList.remove('invalido');
+     segundoapellido.classList.add('valido');
+    }else if(segundoapellido.value === '') {
+        segundoapellido.classList.remove('valido');
+        segundoapellido.classList.add('invalido');
+    }
+ 
+    if(email.value){
+        email.classList.remove('invalido');
+        email.classList.add('valido');
+    }else if(email.value === '') {
+        email.classList.remove('valido');
+        email.classList.add('invalido');
+    }
+
+    if(usuario.value){
+        usuario.classList.remove('invalido');
+        usuario.classList.add('valido');
+    }else if(usuario.value === '') {
+        usuario.classList.remove('valido');
+        usuario.classList.add('invalido');
+    }
+
+    if(contrasenna.value){
+        contrasenna.classList.remove('invalido');
+        contrasenna.classList.add('valido');
+    }else if(contrasenna.value === '') {
+        contrasenna.classList.remove('valido');
+        contrasenna.classList.add('invalido');
+    }
+
+    if(edad.value){
+        edad.classList.remove('invalido');
+        edad.classList.add('valido');
+    }else if(edad.value === '') {
+        edad.classList.remove('valido');
+        edad.classList.add('invalido');
+    }
+
+    if(canton.value){
+        canton.classList.remove('invalido');
+        canton.classList.add('valido');
+    }else if(canton.value === '') {
+        canton.classList.remove('valido');
+        canton.classList.add('invalido');
+    }
+
+    if(distrito.value){
+        distrito.classList.remove('invalido');
+        distrito.classList.add('valido');
+    }else if(distrito.value === '') {
+        distrito.classList.remove('valido');
+        distrito.classList.add('invalido');
+    }
+
+    if(direccionexacta.value){
+        direccionexacta.classList.remove('invalido');
+        direccionexacta.classList.add('valido');
+    }else if(direccionexacta.value === '') {
+        direccionexacta.classList.remove('valido');
+        direccionexacta.classList.add('invalido');
+    }
+ 
+
     docClient.put(params, function(err, data) {
         if (err) {
          //   document.getElementById('textarea').innerHTML = "Unable to add item: " + "\n" + JSON.stringify(err, undefined, 2);
         console.log(JSON.stringify(err, undefined, 2));
+
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'El usuario no ha sido creado,revise los espacios en blanco',
+            confirmButtonText: `Volver al Inicio`,
+            showConfirmButton: false,
+            timer: 1000
+            
+          })   
+          form.reset();
+        
+        
         } else {
         //    document.getElementById('textarea').innerHTML = "PutItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
        console.log(JSON.stringify(data, undefined, 2));
+
        Swal.fire({
-        position: 'top-center',
+        position: 'center',
         icon: 'success',
         title: 'El usuario ha sido creado',
-        confirmButtonText: `Volver al Inicio`,
         showConfirmButton: false,
         timer: 1000
         

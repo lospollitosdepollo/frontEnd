@@ -308,7 +308,10 @@
   
   input[type="date" i] {
     padding: 14px;
+
   }
+  
+  
   
   .table-condensed td, .table-condensed th {
     font-size: 14px;
@@ -362,8 +365,17 @@
     width: 150%;
     font-size: 14px;
     font-family: inherit;
+    border-color: none !important;
+
   }
-  
+  .valido{
+    border-color: green;
+}
+
+.invalido{
+    border-color: red;
+}
+
   .input--style-4 {
     line-height: 50px;
     background: #fafafa;

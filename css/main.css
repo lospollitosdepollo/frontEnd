@@ -350,17 +350,25 @@
   input {
     outline: none;
     margin: 0;
-    border: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     width: 100%;
     font-size: 14px;
     font-family: inherit;
+    border-color: none !important;
   }
+
+  .valido{
+    border-color: green;
+}
+
+.invalido{
+    border-color: red;
+}
   
   .input--style-4 {
-    line-height: 50px;
+    line-height: 40px;
     background: #fafafa;
     -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -370,12 +378,14 @@
     border-radius: 5px;
     padding: 0 20px;
     font-size: 16px;
-    color: #666;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
+
   }
+
+  
   
   .input--style-4::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */
