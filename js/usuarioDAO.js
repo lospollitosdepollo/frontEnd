@@ -26,8 +26,7 @@ let direccionexacta = document.getElementById('txt_direccion_exacta');
 
 
 
-
-function RegistrarUsuario() {
+function crearUsuario() {
     var params = {
         TableName :"Usuarios",
         Item:{
@@ -47,15 +46,128 @@ function RegistrarUsuario() {
         }
         
     };
+
+    if(cedula.value){
+        cedula.classList.remove('invalido');
+        cedula.classList.add('valido');
+    }else if(cedula.value === '') {
+        cedula.classList.remove('valido');
+        cedula.classList.add('invalido');
+    }
+
+    if(primernombre.value){
+        primernombre.classList.remove('invalido');
+        primernombre.classList.add('valido');
+    }else if(primernombre.value === '') {
+        primernombre.classList.remove('valido');
+        primernombre.classList.add('invalido');
+    }
+
+    if(primerapellido.value){
+        primerapellido.classList.remove('invalido');
+        primerapellido.classList.add('valido');
+    }else if(primerapellido.value === '') {
+        primerapellido.classList.remove('valido');
+        primerapellido.classList.add('invalido');
+    }
+
+    if(segundoapellido.value){
+     segundoapellido.classList.remove('invalido');
+     segundoapellido.classList.add('valido');
+    }else if(segundoapellido.value === '') {
+        segundoapellido.classList.remove('valido');
+        segundoapellido.classList.add('invalido');
+    }
+ 
+    if(email.value){
+        email.classList.remove('invalido');
+        email.classList.add('valido');
+    }else if(email.value === '') {
+        email.classList.remove('valido');
+        email.classList.add('invalido');
+    }
+
+    if(usuario.value){
+        usuario.classList.remove('invalido');
+        usuario.classList.add('valido');
+    }else if(usuario.value === '') {
+        usuario.classList.remove('valido');
+        usuario.classList.add('invalido');
+    }
+
+    if(contrasenna.value){
+        contrasenna.classList.remove('invalido');
+        contrasenna.classList.add('valido');
+    }else if(contrasenna.value === '') {
+        contrasenna.classList.remove('valido');
+        contrasenna.classList.add('invalido');
+    }
+
+    if(edad.value){
+        edad.classList.remove('invalido');
+        edad.classList.add('valido');
+    }else if(edad.value === '') {
+        edad.classList.remove('valido');
+        edad.classList.add('invalido');
+    }
+
+    if(canton.value){
+        canton.classList.remove('invalido');
+        canton.classList.add('valido');
+    }else if(canton.value === '') {
+        canton.classList.remove('valido');
+        canton.classList.add('invalido');
+    }
+
+    if(distrito.value){
+        distrito.classList.remove('invalido');
+        distrito.classList.add('valido');
+    }else if(distrito.value === '') {
+        distrito.classList.remove('valido');
+        distrito.classList.add('invalido');
+    }
+
+    if(direccionexacta.value){
+        direccionexacta.classList.remove('invalido');
+        direccionexacta.classList.add('valido');
+    }else if(direccionexacta.value === '') {
+        direccionexacta.classList.remove('valido');
+        direccionexacta.classList.add('invalido');
+    }
+ 
+
     docClient.put(params, function(err, data) {
         if (err) {
          //   document.getElementById('textarea').innerHTML = "Unable to add item: " + "\n" + JSON.stringify(err, undefined, 2);
-        alert(JSON.stringify(err, undefined, 2));
+        console.log(JSON.stringify(err, undefined, 2));
+
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'El usuario no ha sido creado,revise los espacios en blanco',
+            confirmButtonText: `Volver al Inicio`,
+            showConfirmButton: false,
+            timer: 1000
+            
+          })   
+          form.reset();
+        
+        
         } else {
         //    document.getElementById('textarea').innerHTML = "PutItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
-       alert(JSON.stringify(data, undefined, 2));
-        alert("Usuario Creado");    
+       console.log(JSON.stringify(data, undefined, 2));
+
+       Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'El usuario ha sido creado',
+        showConfirmButton: false,
+        timer: 1000
+        
+      })   
+      form.reset();
     }
+
     });
 }
 
@@ -88,15 +200,17 @@ function listarUsuarios() {
 
 
 
-function leerUsuario(   pcedula ) {
+function leerUsuario(pusuario,pcontrasenna ) {
 
     var table = "Usuarios";
-    var cedula = pcedula;
+    var usuario = pusuario;
+    var contrasenna = pcontrasenna;
 
     var params = {
         TableName: table,
         Key:{
-            "cedula": cedula
+            "usuario": usuario,
+            "contrasenna": contrasenna
         }
     };
     docClient.get(params, function(err, data) {
@@ -107,6 +221,7 @@ function leerUsuario(   pcedula ) {
         }
     });
 }
+
 
 function modificarUsuario(  pcedula) {
 
@@ -156,133 +271,11 @@ function borrarUsuario(pcedula) {
             document.getElementById('textarea').innerHTML = "DeleteItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
         }
     });
-}
-
-// ------------------------------------------------------------------------------- Otra Funciones ------------------------------------------------------------------------
-// Funciones que no tengo ni idea para que funcionan pero las dejo a si.
-
-function queryData() {
-    document.getElementById('textarea').innerHTML = "";
-    document.getElementById('textarea').innerHTML += "Querying for movies from 1985.";
-
-    var params = {
-        TableName : "Movies",
-        KeyConditionExpression: "#yr = :yyyy",
-        ExpressionAttributeNames:{
-            "#yr": "year"
-        },
-        ExpressionAttributeValues: {
-            ":yyyy":1985
-        }
-    };
-
-    docClient.query(params, function(err, data) {
-        if (err) {
-            document.getElementById('textarea').innerHTML += "Unable to query. Error: " + "\n" + JSON.stringify(err, undefined, 2);
-        } else {
-            data.Items.forEach(function(movie) {
-                document.getElementById('textarea').innerHTML += "\n" + movie.year + ": " + movie.title;
-            });
-         
-        }
-    });
-}
-
-function scanData() {
-    document.getElementById('textarea').innerHTML = "";
-    document.getElementById('textarea').innerHTML += "Scanning for movies between 1950 and 1975." + "\n";
-
-    var params = {
-        TableName: "Movies",
-        ProjectionExpression: "#yr, title, info.rating",
-        FilterExpression: "#yr between :start_yr and :end_yr",
-        ExpressionAttributeNames: {
-            "#yr": "year"
-        },
-        ExpressionAttributeValues: {
-            ":start_yr": 1950,
-            ":end_yr": 1975
-        }
-    };
-
-    docClient.scan(params, onScan);
-
-    function onScan(err, data) {
-        if (err) {
-            document.getElementById('textarea').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
-        } else {
-            // Print all the movies
-            document.getElementById('textarea').innerHTML += "Scan succeeded: " + "\n";
-            data.Items.forEach(function(movie) {
-                document.getElementById('textarea').innerHTML += movie.year + ": " + movie.title + " - rating: " + movie.info.rating + "\n";
-            });
-
-            // Continue scanning if we have more movies (per scan 1MB limitation)
-            document.getElementById('textarea').innerHTML += "Scanning for more..." + "\n";
-            params.ExclusiveStartKey = data.LastEvaluatedKey;
-            docClient.scan(params, onScan);            
-        }
-    }
-}
-
-function processFile(evt) {
-    var moviesProcessed = 0;
-    document.getElementById('textarea').innerHTML = "";
-    document.getElementById('textarea').innerHTML += "Importing movies into DynamoDB. Please wait..." + "\n";
-    var file = evt.target.files[0];
-    if (file) {
-        var r = new FileReader();
-
-        r.onload = function(e) {
-            var contents = e.target.result;
-            var allMovies = JSON.parse(contents);
-
-            allMovies.forEach(function (movie) {
-
-                var params = {
-                    TableName: "Movies",
-                    Item: {
-                        "year": movie.year,
-                        "title": movie.title,
-                        "info": movie.info
-                    }
-                };
-                docClient.put(params, function (err, data) {
-                    ++moviesProcessed;
-                    if (err) {
-                        console.log("Unable to add movie: " + movie.title + "\n");
-                    } else {
-                        switch(moviesProcessed) {
-                            case 2501:
-                                document.getElementById('textarea').innerHTML += "_______________" + "\n";
-                                document.getElementById('textarea').innerHTML += "Halfway done..." + "\n";
-                                document.getElementById('textarea').innerHTML += "_______________" + "\n";
-                                break;
-                            case 3751:
-                                document.getElementById('textarea').innerHTML += "______________" + "\n";
-                                document.getElementById('textarea').innerHTML += "Almost done..." + "\n";
-                                document.getElementById('textarea').innerHTML += "______________" + "\n";
-                                break;
-                            case 5001:
-                                document.getElementById('textarea').innerHTML += "______________________" + "\n";
-                                document.getElementById('textarea').innerHTML += "Finished processing!" + "\n";
-                                document.getElementById('textarea').innerHTML += "______________________" + "\n";
-                                break;
-                            default: document.getElementById('textarea').innerHTML += "Added: " + movie.title + "\n";
-                        }
-                        textarea.scrollTop = textarea.scrollHeight;
-                    }
-                });
-            });
-    };
-        r.readAsText(file);
-    } else {
-        alert("Could not read movie data file");
-    }
-}
+} 
 
 
-
+let btnRegistrar = document.getElementById('btnRegistrar');
+btnRegistrar.addEventListener('click', crearUsuario);
 
 
 
