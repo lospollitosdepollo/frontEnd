@@ -1,3 +1,68 @@
+// Variables de cloudinary
+const imgpreview = document.getElementById('img_preview');
+const uploader_avatar = document.getElementById('img_uploader_portada');
+const progress_bar = document.getElementById('progress_bar');
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/pollitos/image/upload';
+const CLOUDINARY_UPLOAD_PRESET = 'icstnrqx';
+
+AWS.config.region = 'us-east-2'; // Región
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-2:7b407fd7-19f2-48ee-b302-38bbbbde19fe',
+    RoleArn: "arn:aws:iam::374632472070:role/Cognito_ProyectoComponentesUnauth_Role"});
+
+
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
+
+
+let nombre = document.getElementById('txt_nombre');
+let descripcion = document.getElementById('txt_descripcion');
+let condicion = document.getElementById('txt_condicion');
+let precio = document.getElementById('txt_precio');
+let categoria = document.getElementById('txt_categoria');
+let pais = document.getElementById('txt_pais');
+let provincia = document.getElementById('txt_provincia');
+let canton = document.getElementById('txt_canton');
+let distrito = document.getElementById('txt_distrito');
+let direccionexacta = document.getElementById('txt_direccion_exacta');
+let fotografia = document.getElementById('txt_fotografia');
+
+
+// Funcion para crear Productos
+
+function createItem() {
+    let error = validar(nombre, descripcion, condicion, precio, categoria, provincia, canton, distrito, direccionexacta);
+    
+    if(error == false) {
+        var params = {
+            TableName :"Productos",
+            Item:{
+                //"idProducto": producto.value, autoincrementable??
+                "nombre": nombre.value,
+                "descripcion": descripcion.value,
+                "condicion": condicion.value,
+                "precio": Number(precio.value),
+                "categoria": categoria.value,
+                "pais": "Costa Rica",
+                "provincia": provincia.value,
+                "canton": canton.value,
+                "distrito": distrito.value,
+                "direccionexacta": direccionexacta.value,
+               // "fotografia": fotografia.value,
+                "estado": "Disponible"
+            }
+            
+        };
+        docClient.put(params, function(err, data) {
+            if (err) {
+             //   document.getElementById('textarea').innerHTML = "Unable to add item: " + "\n" + JSON.stringify(err, undefined, 2);
+            alert(JSON.stringify(err, undefined, 2));
+            } else {
+            //    document.getElementById('textarea').innerHTML = "PutItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
+           alert(JSON.stringify(data, undefined, 2));
+            alert("Usuario Creado");    
+        }
+        });
     }
 
     else {
