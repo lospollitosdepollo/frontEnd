@@ -1,6 +1,6 @@
 // Variables de cloudinary
 const imgpreview = document.getElementById('img_preview');
-const uploader_avatar = document.getElementById('img_uploader_portada');
+const uploader_avatar = document.getElementById('img_uploader_imagen');
 const progress_bar = document.getElementById('progress_bar');
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/pollitos/image/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'icstnrqx';
@@ -25,7 +25,7 @@ let provincia = document.getElementById('txt_provincia');
 let canton = document.getElementById('txt_canton');
 let distrito = document.getElementById('txt_distrito');
 let direccionexacta = document.getElementById('txt_direccion_exacta');
-let fotografia = document.getElementById('txt_fotografia');
+const fotografia = document.querySelector('#imagen');
 
 
 // Funcion para crear Productos

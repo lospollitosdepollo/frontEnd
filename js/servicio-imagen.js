@@ -7,10 +7,10 @@ $(function() {
     $.cloudinary.config({cloud_name: 'pollitos', api_key: '739669841412784'});
     
     //Upload button
-    let uploaButton = $('#btnSeleccionarImagen');
+    let uploadButton = $('#btnSeleccionarImagen');
     
     //Upload button event
-    uploaButton.on('click', function(e){
+    uploadButton.on('click', function(e){
             //Initiate upload
             cloudinary.openUploadWidget({cloud_name: 'pollitos', upload_preset: 'uploaduser', tags:['cgal']},
             function(error, result){
