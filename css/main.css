@@ -650,4 +650,13 @@
       padding: 50px 40px;
     }
   }
+
+.img_registro_imagen {
+    height: 7rem;
+}
+
+.upload-img {
+  display: grid;
+  justify-items: center;
+}
   
